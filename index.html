@@ -107,6 +107,11 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}head
 </main>
 <footer><div class="wrap foot"><div><div class="brand"><span><span class="klick" style="color:#d8c4ff">Klick</span><span class="maroc" style="color:#ff7777">Maroc</span>.</span></div><small>اختيارات عملية لحياتك اليومية.</small></div><small>© 2026 KlickMaroc. جميع الحقوق محفوظة.</small></div></footer>
 <a class="whatsapp-float" href="https://wa.me/212654698220" target="_blank" rel="noopener">💬 تواصل معنا عبر واتساب</a>
+<dialog id="productModal" class="product-modal" aria-labelledby="modalTitle">
+<div class="modal-inner"><button type="button" id="modalClose" class="modal-close" aria-label="إغلاق التفاصيل">✕</button>
+<div class="modal-gallery"><img id="modalMainImage" alt=""><div class="modal-image-controls"><button type="button" id="modalPrev" aria-label="الصورة السابقة">❮</button><span id="modalImageCount"></span><button type="button" id="modalNext" aria-label="الصورة التالية">❯</button></div><div id="modalThumbs" class="modal-thumbs"></div></div>
+<div class="modal-content"><div class="sku" id="modalSku"></div><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="price" id="modalPrice"></div><h3>معلومات المنتج</h3><ul id="modalDetails"></ul><p class="details-note">الملحقات والتوفر وثمن التوصيل كيتأكدو عبر واتساب قبل الطلب.</p><a id="modalWhatsApp" class="order order-wa" target="_blank" rel="noopener">💬 اطلب عبر واتساب</a></div></div>
+</dialog>
 <script>
 const WHATSAPP_NUMBER = "212654698220";
 const products = [
@@ -250,10 +255,6 @@ const storeUrl="https://elbeqqalmehdi2-ctrl.github.io/KlickMaroc/";
 const schemaProducts=products.map(p=>({"@type":"Product","name":p.name,"description":p.desc,"image":(p.images||[p.image]).map(img=>storeUrl+encodeURI(img)),"sku":p.sku,"url":storeUrl+"#product-"+p.sku.toLowerCase().replace(/[^a-z0-9-]/g,"-"),"offers":{"@type":"Offer","priceCurrency":"MAD","price":Number(p.price.match(/[0-9]+/)?.[0]||0),"url":storeUrl+"#product-"+p.sku.toLowerCase().replace(/[^a-z0-9-]/g,"-"),"seller":{"@type":"Organization","name":"KlickMaroc"}}}));
 const schemaScript=document.createElement("script");schemaScript.type="application/ld+json";schemaScript.textContent=JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"ItemList","name":"منتجات KlickMaroc في المغرب","itemListElement":schemaProducts.map((p,i)=>({"@type":"ListItem","position":i+1,"item":p}))},{"@type":"WebSite","name":"KlickMaroc","url":storeUrl,"inLanguage":"ar-MA"}]});document.head.appendChild(schemaScript);
 </script>
-<dialog id="productModal" class="product-modal" aria-labelledby="modalTitle">
-<div class="modal-inner"><button type="button" id="modalClose" class="modal-close" aria-label="إغلاق التفاصيل">✕</button>
-<div class="modal-gallery"><img id="modalMainImage" alt=""><div class="modal-image-controls"><button type="button" id="modalPrev" aria-label="الصورة السابقة">❮</button><span id="modalImageCount"></span><button type="button" id="modalNext" aria-label="الصورة التالية">❯</button></div><div id="modalThumbs" class="modal-thumbs"></div></div>
-<div class="modal-content"><div class="sku" id="modalSku"></div><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="price" id="modalPrice"></div><h3>معلومات المنتج</h3><ul id="modalDetails"></ul><p class="details-note">الملحقات والتوفر وثمن التوصيل كيتأكدو عبر واتساب قبل الطلب.</p><a id="modalWhatsApp" class="order order-wa" target="_blank" rel="noopener">💬 اطلب عبر واتساب</a></div></div>
-</dialog>
+
 </body>
 </html>
