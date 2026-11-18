@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elbeqqalmehdi2-ctrl.github.io/KlickMaroc/sitemap.xml
+Sitemap: https://klickmaroc.pages.dev/sitemap.xml
