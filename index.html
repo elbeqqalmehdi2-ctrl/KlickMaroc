@@ -148,6 +148,35 @@ button:focus-visible,a:focus-visible,.product:focus-visible,.order-wa:focus-visi
 @keyframes kiProgress{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes kiExit{to{opacity:0;transform:scale(1.08)}}
 @media(max-width:600px){.ki-scene img{width:98vw;height:62vh}.ki-scene h2{bottom:13%}}
 @media(prefers-reduced-motion:reduce){#kmIntro{display:none!important}}
+
+/* Editorial product gallery and cinematic lighting */
+#products{background:#f5f7f6}
+#productGrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,42px)}
+#productGrid .product{border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+#productGrid .product:hover{box-shadow:none;transform:none}
+#productGrid .product-visual{position:relative;height:clamp(280px,32vw,420px);padding:0;border:0;border-radius:0;background:radial-gradient(ellipse at 50% 40%,#fff 25%,#f5f7f6 72%);display:grid;place-items:center;overflow:hidden}
+#productGrid .main-product-image{width:100%;height:100%;max-height:100%;object-fit:contain;border-radius:0;mix-blend-mode:multiply;filter:contrast(1.035) saturate(1.04);transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+#productGrid .product:hover .main-product-image{transform:scale(1.055)}
+#productGrid .product-thumbs,#productGrid .sku,#productGrid .product-badge,#productGrid .product-body>p{display:none}
+#productGrid .product-body{padding:14px 2px 20px;gap:8px;border-bottom:1px solid #d7e1df}
+#productGrid .product h3{font-size:clamp(15px,1.6vw,19px);line-height:1.55;min-height:0;margin:0;font-weight:750}
+#productGrid .price{font-size:23px;margin-top:auto;color:#08665f}
+#productGrid .product-details{padding:0;border:0;background:transparent;margin:0}
+#productGrid .product-details summary{list-style:none;font-size:13px;font-weight:650;color:#526471;padding:4px 0}
+#productGrid .product-details summary::-webkit-details-marker{display:none}
+#productGrid .product-details summary:after{content:" +";color:#087f76;font-size:18px}
+#productGrid .order{margin-top:2px;border-radius:8px;padding:10px;font-size:14px}
+@media(max-width:760px){#productGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}#productGrid .product-visual{height:clamp(175px,44vw,330px)}#productGrid .product h3{font-size:14px}#productGrid .price{font-size:19px}#productGrid .order{font-size:12px}}
+#kmIntro{background:#fff}
+#kmIntro:before{background:conic-gradient(from 90deg,#fff,#a8e5df 20%,#fefefe 40%,#c9dce8 60%,#fff 80%);filter:blur(100px);opacity:.7}
+#kmIntro:after{background:radial-gradient(ellipse at center,#fff 28%,#ffffff00 76%)}
+.ki-scene img{width:min(95vw,1000px);height:79vh;mask-image:radial-gradient(ellipse at center,#000 54%,#000e 68%,transparent 100%);filter:contrast(1.065) saturate(1.05);mix-blend-mode:multiply}
+.ki-scene h2{font-size:clamp(19px,3.5vw,46px);bottom:9%;letter-spacing:-.025em}
+.ki-ring:before,.ki-ring:after{height:65px;filter:blur(30px);opacity:.4;background:linear-gradient(90deg,transparent,#8ce6d6,white,transparent);box-shadow:none}
+.ki-active img{animation:kiPremiumCamera 4.6s cubic-bezier(.18,.75,.22,1) both}
+@keyframes kiPremiumCamera{0%{transform:translate3d(18vw,2vh,-200px) rotate(-10deg) scale(.76);opacity:0;filter:blur(14px)}24%{transform:translate3d(0,-4vh,0) rotate(0) scale(1);opacity:1;filter:contrast(1.065)}73%{transform:translate3d(-2vw,-4vh,20px) rotate(2deg) scale(1.1);opacity:1;filter:contrast(1.065)}100%{transform:translate3d(-20vw,-5vh,80px) rotate(8deg) scale(1.24);opacity:0;filter:blur(12px)}}
+@media(max-width:600px){.ki-scene img{width:100vw;height:64vh}.ki-scene h2{bottom:13%}}
+@media(prefers-reduced-motion:reduce){#productGrid .main-product-image{transition:none}}
 </style>
 </head>
 <body>
@@ -319,13 +348,13 @@ products.forEach(p=>{
  card.innerHTML = `<div class="product-visual"><img class="main-product-image" src="${p.image}" alt="${p.name} - ${seoTerms[p.sku]||"متوفر في المغرب لدى KlickMaroc"}" loading="lazy" decoding="async">${thumbnails}</div>
  <div class="product-body"><span class="product-badge">${["battery","A144","Keenso","A230","T62"].includes(p.sku)?"جديد":categoryLabels[card.dataset.category]}</span><div class="sku">SKU: ${p.sku}</div><h3><a href="#product-${p.sku.toLowerCase().replace(/[^a-z0-9-]/g,"-")}">${p.name}</a></h3><p>${p.desc}</p>
  <div class="price">${p.price}</div>
- <details class="product-details"><summary>📋 معلومات أكثر عن المنتج</summary><p class="details-intro">${p.desc}</p><ul>${(productDetails[p.sku]||[]).map(item=>`<li>${item}</li>`).join("")}</ul><p class="details-note">المواصفات والملحقات والتوفر كيتأكدو قبل الطلب عبر واتساب.</p></details>
+ <details class="product-details"><summary>تفاصيل المنتج</summary><p class="details-intro">${p.desc}</p><ul>${(productDetails[p.sku]||[]).map(item=>`<li>${item}</li>`).join("")}</ul><p class="details-note">المواصفات والملحقات والتوفر كيتأكدو قبل الطلب عبر واتساب.</p></details>
  <a class="order order-wa" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`السلام عليكم، بغيت نطلب ${p.name} (${p.sku})، الثمن ${p.price}. واش متوفر؟`)}" target="_blank" rel="noopener">💬 اطلب عبر واتساب</a></div>`;
  card.setAttribute("tabindex","0");
  card.setAttribute("role","button");
  card.setAttribute("aria-label","افتح صور وتفاصيل المنتج: "+p.name);
  card.addEventListener("click",e=>{
-   if(e.target.closest("a.order-wa, .product-thumb, .product-details summary"))return;
+   if(e.target.closest("a.order-wa, .product-thumb, .product-details"))return;
    openProductModal(p);
  });
  card.addEventListener("keydown",e=>{
@@ -369,14 +398,14 @@ document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()
 </script>
 
 <script>
-(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroStudioV2'))return;}catch(e){}
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroStudioV3'))return;}catch(e){}
 if(typeof products==='undefined'||!products.length)return;
 const chosen=['GRINDER4BLADE','MOTO-BT-HEADSET','A144','battery'].map(id=>products.find(p=>p.sku===id)).filter(Boolean);if(chosen.length!==4)return;
 const intro=document.createElement('div');intro.id='kmIntro';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','مقدمة KlickMaroc');intro.innerHTML='<div class="ki-ring" aria-hidden="true"></div><button class="ki-skip" type="button">تجاوز المقدمة ←</button><div class="ki-progress" aria-hidden="true"><i></i></div>';
 const scenes=[];for(const p of chosen){const scene=document.createElement('div');scene.className='ki-scene';const img=document.createElement('img');img.src=p.image;img.alt=p.name;const h=document.createElement('h2');h.textContent=p.name;const sub=document.createElement('p');sub.textContent='اكتشف اختيارات KlickMaroc';scene.append(img,h,sub);intro.append(scene);scenes.push(scene)}
 const final=document.createElement('div');final.className='ki-scene';final.innerHTML='<div class="ki-word">Klick<span>Maroc</span></div><h2>اختيارات عملية لحياتك اليومية</h2><p>مرحبا بك في متجرنا</p>';intro.append(final);scenes.push(final);
 const existing=[...document.body.children].filter(el=>!['SCRIPT','STYLE'].includes(el.tagName));const states=existing.map(el=>[el,el.inert]);const scroll=document.body.style.overflow;const previous=document.activeElement;document.body.append(intro);existing.forEach(el=>el.inert=true);document.body.style.overflow='hidden';const skip=intro.querySelector('button');skip.focus();let timers=[],closed=false;
-function close(){if(closed)return;closed=true;timers.forEach(clearTimeout);try{sessionStorage.setItem('kmIntroStudioV2','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus();},650);document.removeEventListener('keydown',key)}
+function close(){if(closed)return;closed=true;timers.forEach(clearTimeout);try{sessionStorage.setItem('kmIntroStudioV3','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus();},650);document.removeEventListener('keydown',key)}
 function key(e){if(e.key==='Escape')close();if(e.key==='Tab'){e.preventDefault();skip.focus()}}
 skip.addEventListener('click',close);document.addEventListener('keydown',key);scenes.forEach((scene,i)=>{timers.push(setTimeout(()=>{scenes.forEach(x=>x.classList.remove('ki-active'));scene.classList.add('ki-active')},i*4600))});timers.push(setTimeout(close,23000));})();
 </script>
