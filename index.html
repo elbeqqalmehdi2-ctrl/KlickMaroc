@@ -74,63 +74,40 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}head
 /* KlickMaroc storefront refresh */
 .announcement{background:#211045;color:#fff;overflow:hidden;padding:9px 0;font-size:13px;font-weight:700}.announcement-inner{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 32px;padding:0 15px}.announcement-inner span{white-space:nowrap}.hero{position:relative}.hero-art{animation:kmFloat 5s ease-in-out infinite}.promo-window{border:1px solid #ffffff25}.promo-arrow{direction:ltr;display:grid;place-items:center;z-index:2;transition:background .2s}.promo-arrow:hover{background:#ffd55b}.promo-slide img{border-radius:16px}.promo-slide b{display:inline-block;background:#ffffff24;border-radius:99px;padding:5px 12px}.product{position:relative;transition:transform .22s,box-shadow .22s,border-color .22s;border-radius:22px}.product:hover{transform:translateY(-5px);box-shadow:0 16px 35px #32107820;border-color:#b4a1db}.product[hidden]{display:none!important}.product-visual{background:linear-gradient(160deg,#fff,#f6f2fc);padding:16px}.product-visual .main-product-image{transition:transform .3s}.product:hover .main-product-image{transform:scale(1.025)}.product-badge{display:inline-block;background:#eee7ff;color:#48218c;border-radius:99px;padding:5px 10px;font-size:12px;font-weight:800}.price{font-size:24px;font-weight:900}.order{transition:filter .2s,transform .2s}.order:hover{filter:brightness(1.08)}.pill{padding:11px 16px;font-weight:750;cursor:pointer;transition:transform .2s,background .2s}.pill:hover{transform:translateY(-2px)}.product-search{box-shadow:0 5px 18px #3210780b}.step-card{transition:transform .2s}.step-card:hover{transform:translateY(-4px)}@keyframes kmFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(-2deg)}}@media(max-width:600px){.announcement-inner{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity}.announcement-inner span{scroll-snap-align:start}.promo-slide{padding:18px 40px}.pills{gap:6px}.pill{padding:9px 11px}.product:hover{transform:none}}@media(prefers-reduced-motion:reduce){.hero-art{animation:none}.product,.promo-track,.pill,.product-visual .main-product-image{transition:none!important}}
 
-/* KlickMaroc premium color system */
-:root{--bg:#eae2f7;--card:#f7f0ff;--ink:#25163e;--purple:#6331ad;--line:#d6c5ed;--muted:#635477}
-body{background:linear-gradient(145deg,#eee6fa 0%,#e3d5f5 48%,#f4e7f4 100%);color:var(--ink)}
-header{background:linear-gradient(110deg,#f0e6ff,#faf3ff);border-bottom:1px solid #d8c3f1}
-.hero{background:radial-gradient(ellipse at 15% 20%,#8651cd 0%,#482181 43%,#28134e 100%)}
-.trust-strip{background:linear-gradient(90deg,#e3d1fa,#f2e5fc,#e3d1fa);border-color:#d6c2ef}
-.promo-section{background:linear-gradient(135deg,#ddcdf5,#f0e2fa)}
-#products{background:radial-gradient(ellipse at 95% 0%,#d6c2f4 0%,transparent 52%),linear-gradient(145deg,#eee5fa,#e4d8f6)}
-#products .section-head h2{color:#32165b}
-.product{background:linear-gradient(150deg,#f6ecff,#e9dcf9);border:1px solid #cdb5eb;box-shadow:0 8px 24px #4d218619}
-.product:nth-child(3n+2){background:linear-gradient(145deg,#f8e9f7,#edddf8)}
-.product:nth-child(3n+3){background:linear-gradient(145deg,#ede8ff,#e0d5f6)}
-.product-visual{background:linear-gradient(150deg,#f4eaff,#e6d8f8);border-bottom:1px solid #d7c4ee}
-.product-visual .main-product-image{border-radius:12px}
-.product-body{background:transparent;color:#25163e}
-.product-body h3 a{color:#32165b}
-.product-body p,.sku{color:#625174}
-.product-badge{background:#d9c4f4;color:#442078;border:1px solid #c5a8e8}
-.price{color:#542197}
-.product .order{background:linear-gradient(105deg,#482080,#7440b9);color:#fff;box-shadow:0 5px 12px #51219b33}
-.product-details{background:#e5d7f6;border-color:#cfb8e9;border-radius:11px}
-.product-details summary{color:#442078}
-.pill{background:#f2e8ff;border-color:#c9afe9;color:#492778}
-.pill.active{background:linear-gradient(110deg,#482080,#7542bd);color:#fff;border-color:#6331ad}
-.product-search,.catalog-toolbar select{background:#f8f1ff;border-color:#cbb4ea;color:#32165b}
-.how-order,.faq-section,.social-section{background:linear-gradient(140deg,#e8dcf8,#f3e6fb)}
-.info-card,.step-card,.contact-box,.social-link{background:linear-gradient(145deg,#f2e7ff,#e4d6f8);border-color:#ceb9eb}
-.mid-cta{background:linear-gradient(110deg,#28134e,#6331ad)}
-.product-modal,#orderDialog{background:#f7efff;color:#25163e}
-.product:hover{border-color:#9465cc;box-shadow:0 16px 35px #51219b33}
 
-/* Luxury Gold palette */
-:root{--bg:#e9d5a4;--card:#f0e2bf;--ink:#302038;--purple:#513061;--line:#c6a66a;--muted:#675338}
-body{background:linear-gradient(135deg,#e4c98a,#f1e3bf 45%,#d4b36d);color:var(--ink)}
-header{background:linear-gradient(110deg,#d8b76e,#f0deb0,#e2c68a);border-bottom:1px solid #b99753}
-.hero{background:radial-gradient(ellipse at 15% 15%,#694768,#38223f 55%,#24182d)}
-.announcement{background:#30203e;color:#f5df9e}
-.trust-strip,.promo-section{background:linear-gradient(125deg,#d9bb78,#efe0b7,#e1c68b);border-color:#c6a66a}
-.promo-window{background:linear-gradient(120deg,#30203e,#624066);border:1px solid #b99753}
-.promo-slide:nth-child(2n),.promo-slide:nth-child(3n){background:linear-gradient(120deg,#49304d,#70513e)}
-#products{background:radial-gradient(ellipse at 95% 0%,#d4b16b,transparent 55%),linear-gradient(145deg,#e9d5a4,#f0e2bf 52%,#dfc58c)}
-#products .section-head h2,.product-body h3 a{color:#38223f}
-.product,.product:nth-child(3n+2),.product:nth-child(3n+3){background:linear-gradient(145deg,#f1e4c4,#e3c990);border:1px solid #c4a060;box-shadow:0 8px 24px #65491c22}
-.product-visual{background:linear-gradient(145deg,#f3e7c9,#e5cc96);border-color:#c9ad75}
-.product-body{color:#302038}.product-body p,.sku{color:#675338}
-.product-badge{background:#d9b96e;color:#39293d;border-color:#b79450}
-.price{color:#513061;font-weight:900}
-.product .order{background:linear-gradient(110deg,#30203e,#624066);border:1px solid #b79551;color:#fff4d5}
-.product-details{background:#e7d1a0;border-color:#c7a76a}.product-details summary{color:#49304d}
-.pill{background:#f0dfb3;border-color:#b99a60;color:#49304d}.pill.active{background:#30203e;color:#f9e7b5;border-color:#b99753}
-.product-search,.catalog-toolbar select{background:#f3e6c5;border-color:#b99a60;color:#30203e}
-.how-order,.faq-section,.social-section{background:linear-gradient(140deg,#e2c88e,#efe1bb)}
-.info-card,.step-card,.contact-box,.social-link{background:linear-gradient(145deg,#f2e4bf,#e4cc96);border-color:#c6a66a}
-.mid-cta{background:linear-gradient(110deg,#30203e,#624066)}
-.product-modal,#orderDialog{background:#f0e2bf;color:#30203e}
-.product:hover{border-color:#9b742e;box-shadow:0 16px 35px #65491c35}
-.promo-dot.active{background:#513061}.promo-slide a{background:linear-gradient(110deg,#e6c46d,#f6dfa0);color:#30203e}
+/* Unified storefront palette */
+:root{--bg:#f5f6f8;--card:#fff;--ink:#182b3a;--purple:#087f76;--red:#182b3a;--green:#087f76;--line:#dce4e8;--muted:#526471}
+body,#products,.promo-section,.how-order,.faq-section,.social-section{background:var(--bg);color:var(--ink)}
+header,.trust-strip,.info{background:#fff;border-color:var(--line)}
+nav,.trust-strip-inner{color:var(--ink)}
+.announcement,footer{background:#182b3a;color:#fff}
+.foot small,.hero p,.mid-cta p{color:#e0eaee}
+.hero,.mid-cta,.promo-window,.promo-slide:nth-child(n){background:linear-gradient(120deg,#182b3a,#254858);color:#fff}
+.eyebrow{color:#b7e5df}
+.btn,.promo-slide a{background:#087f76;color:#fff}
+.btn-secondary{background:#ffffff18;color:#fff;border-color:#ffffff65}
+.promo-slide p{color:#e0eaee}
+.promo-arrow{color:var(--ink)}.promo-arrow:hover{background:#dcefeb}
+#products .section-head h2,.product-body h3 a,.product-body,.product-details summary{color:var(--ink)}
+.product,.product:nth-child(n),.info-card,.step-card,.contact-box,.social-link,.product-modal,#orderDialog,.checkout-panel{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:0 8px 24px #182b3a0c}
+.product-visual{background:#fff;border-color:var(--line)}
+.product:hover{border-color:#8dbab7;box-shadow:0 16px 35px #182b3a18}
+.product-body p,.sku,.step-card p,.faq-list p,.social-note,.promo-heading span{color:var(--muted)}
+.product-badge{background:#e1f1ee;color:#08665f;border-color:#cde5e1}
+.price,.step-number{color:#087f76}
+.product .order,.checkout-submit,.order,.contact-link{background:#087f76;color:#fff;border:0;box-shadow:none}
+.product .order:hover,.order:hover{background:#07675f}
+.product-details{background:#f5f6f8;color:var(--ink);border-color:var(--line)}
+.pill,.product-search,.catalog-toolbar select{background:#fff;border-color:var(--line);color:var(--ink)}
+.pill.active,.pill:hover{background:#087f76;color:#fff;border-color:#087f76}
+.product-search:focus{border-color:#087f76;box-shadow:0 0 0 3px #087f761a}
+.promo-dot{background:#a6b7be}.promo-dot.active{background:#087f76}
+.info-card{border-top:3px solid #087f76}
+.faq-list details[open],.modal-thumbs button.active,.social-link:hover{border-color:#087f76}
+button:focus-visible,a:focus-visible,.product:focus-visible,.order-wa:focus-visible{outline-color:#087f76}
+.hero button:focus-visible,.hero a:focus-visible,.promo-window a:focus-visible{outline-color:#b7e5df}
+.whatsapp-float{background:#087f76;color:#fff}
+.checkout-note{background:#eaf4f2;border-color:#cde5e1}
 </style>
 </head>
 <body>
