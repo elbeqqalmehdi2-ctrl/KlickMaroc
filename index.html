@@ -451,14 +451,27 @@ document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()
 #kmIntro.km-luxe.ki-exit{animation:kmFade .35s both}
 @keyframes kmReveal{0%{opacity:0;transform:translateY(12px) scale(.96)}35%,100%{opacity:1;transform:none}}
 @keyframes kmLine{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
-@keyframes kmFade{to{opacity:0}}
+@keyframes kmFade{to{opacity:0}} 
+.km-luxe .km-mark{display:block;animation:kmMark 1s cubic-bezier(.16,1,.3,1) both;filter:drop-shadow(0 0 16px #dbb87940)}
+.km-luxe .km-name{position:relative;background:linear-gradient(105deg,#f6f3ed 25%,#f6f3ed 42%,#fff4ce 50%,#f6f3ed 58%);background-size:250% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:kmShine 1.65s .35s both}
+.km-luxe .km-name span{color:transparent;background:linear-gradient(105deg,#bd9351 20%,#e8ca8d 45%,#fff0bf 50%,#c99d58 70%);background-size:250% 100%;background-clip:text;-webkit-background-clip:text;animation:kmShine 1.65s .35s both}
+.km-luxe .km-tag{animation:kmTag .65s .65s both}
+.km-luxe .km-center:before{content:"";position:absolute;inset:-55px;pointer-events:none;background:radial-gradient(ellipse,#d9ad6020,transparent 65%);z-index:-1;animation:kmGlow 2.5s both}
+.km-luxe .km-center{position:relative;isolation:isolate}
+#kmIntro.km-luxe.ki-exit{animation:kmFadePremium .35s both}
+@keyframes kmMark{from{opacity:0;transform:scale(.65) rotate(-12deg)}to{opacity:1;transform:none}}
+@keyframes kmShine{from{background-position:100% 50%}to{background-position:0% 50%}}
+@keyframes kmTag{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@keyframes kmGlow{0%{opacity:0;transform:scale(.8)}50%{opacity:1}100%{opacity:.65;transform:scale(1.1)}}
+@keyframes kmFadePremium{to{opacity:0;transform:scale(1.025)}}
+
 </style>
 <script>
-(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroLuxeV1'))return;}catch(e){}
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroLuxeV2'))return;}catch(e){}
 const intro=document.createElement('div');intro.id='kmIntro';intro.className='km-luxe';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','مقدمة KlickMaroc');
 intro.innerHTML='<button class="ki-skip" type="button">تجاوز المقدمة</button><div class="km-center"><svg class="km-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="12" stroke="currentColor" stroke-width="1.5" transform="rotate(45 32 32)"/><path d="M23 19v26m0-12 17-14M23 33l17 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="km-name">Klick<span>Maroc</span></div><div class="km-line"></div><div class="km-tag">اختيارات راقية لحياتك اليومية</div></div><div class="ki-progress" aria-hidden="true"><i></i></div>';
 const existing=[...document.body.children].filter(el=>!['SCRIPT','STYLE'].includes(el.tagName));const states=existing.map(el=>[el,el.inert]);const scroll=document.body.style.overflow;const previous=document.activeElement;document.body.append(intro);existing.forEach(el=>el.inert=true);document.body.style.overflow='hidden';const skip=intro.querySelector('button');skip.focus({preventScroll:true});let closed=false;
-function close(){if(closed)return;closed=true;clearTimeout(timer);try{sessionStorage.setItem('kmIntroLuxeV1','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus({preventScroll:true});},350);document.removeEventListener('keydown',key)}
+function close(){if(closed)return;closed=true;clearTimeout(timer);try{sessionStorage.setItem('kmIntroLuxeV2','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus({preventScroll:true});},350);document.removeEventListener('keydown',key)}
 function key(e){if(e.key==='Escape')close();if(e.key==='Tab'){e.preventDefault();skip.focus()}}
 skip.addEventListener('click',close);document.addEventListener('keydown',key);const timer=setTimeout(close,2500);})();
 </script>
