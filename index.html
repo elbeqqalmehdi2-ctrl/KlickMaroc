@@ -217,6 +217,12 @@ button:focus-visible,a:focus-visible,.product:focus-visible,.order-wa:focus-visi
 </style>
 <meta name="google-site-verification" content="j42u8u_3J5bacj1qBAVlEwQ6991Xy1Wau-nEggngeO4" />
 <style>.hero .hero-grid{grid-template-columns:1fr}.hero .hero-grid>div:first-child{max-width:850px;margin-inline:auto;text-align:center}.hero .hero-grid .hero-actions,.hero .hero-grid .hero-perks{justify-content:center}.hero .hero-grid p{margin-inline:auto}</style>
+<style>
+.km-offer-price{margin-top:auto;padding:12px 14px;border-radius:14px;background:#f0f8f6;border:1px solid #cce5df;display:grid;gap:3px}
+.km-offer-label{font-size:12px;font-weight:800;color:#087f76}
+.km-offer-price .price{margin:0;font-size:26px;line-height:1.3;color:#087f76}
+.km-offer-note{font-size:12px;color:#425c59}
+</style>
 </head>
 <body>
 <header><div class="wrap nav">
@@ -383,7 +389,7 @@ products.forEach(p=>{
  const categoryLabels={home:"المنزل والمطبخ",care:"العناية الشخصية",car:"السيارات والدراجات",sport:"الرياضة والتنقل",accessories:"الإكسسوارات"};
  card.innerHTML = `<div class="product-visual"><img class="main-product-image" src="${p.image}" alt="${p.name} - ${seoTerms[p.sku]||"متوفر في المغرب لدى KlickMaroc"}" loading="lazy" decoding="async">${thumbnails}</div>
  <div class="product-body"><span class="product-badge">${["battery","A144","Keenso","A230","T62"].includes(p.sku)?"جديد":categoryLabels[card.dataset.category]}</span><div class="sku">SKU: ${p.sku}</div><h3><a href="#product-${p.sku.toLowerCase().replace(/[^a-z0-9-]/g,"-")}">${p.name}</a></h3><p>${p.desc}</p>
- <div class="price">${p.price}</div>
+ <div class="km-offer-price"><span class="km-offer-label">اختيار مميز</span><div class="price">${p.price}</div><span class="km-offer-note">الدفع عند الاستلام</span></div>
  <details class="product-details"><summary>تفاصيل المنتج</summary><p class="details-intro">${p.desc}</p><ul>${(productDetails[p.sku]||[]).map(item=>`<li>${item}</li>`).join("")}</ul><p class="details-note">المواصفات والملحقات والتوفر كيتأكدو قبل الطلب عبر واتساب.</p></details>
  <a class="order order-wa" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`السلام عليكم، بغيت نطلب ${p.name} (${p.sku})، الثمن ${p.price}. واش متوفر؟`)}" target="_blank" rel="noopener">💬 اطلب عبر واتساب</a></div>`;
  card.setAttribute("tabindex","0");
