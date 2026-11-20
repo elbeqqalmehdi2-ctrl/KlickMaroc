@@ -18,26 +18,63 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "OnlineStore",
-  "name": "KlickMaroc",
-  "url": "https://klickmaroc.pages.dev/",
-  "description": "متجر إلكتروني مغربي لمنتجات عملية للمنزل والعناية الشخصية والإكسسوارات.",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Morocco"
-  },
-  "availableLanguage": ["ar", "fr"],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+212710848218",
-    "contactType": "customer service",
-    "availableLanguage": ["ar", "fr"]
-  }
+  "@graph": [
+    {
+      "@type": "OnlineStore",
+      "name": "KlickMaroc",
+      "url": "https://klickmaroc.pages.dev/",
+      "description": "متجر إلكتروني مغربي لمنتجات عملية للمنزل والعناية الشخصية والإكسسوارات.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Morocco"
+      },
+      "availableLanguage": [
+        "ar",
+        "fr"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+212710848218",
+        "contactType": "customer service",
+        "availableLanguage": [
+          "ar",
+          "fr"
+        ]
+      },
+      "@id": "https://klickmaroc.pages.dev/#store",
+      "logo": "https://klickmaroc.pages.dev/klickmaroc-logo.png",
+      "image": "https://klickmaroc.pages.dev/klickmaroc-logo.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://klickmaroc.pages.dev/#website",
+      "url": "https://klickmaroc.pages.dev/",
+      "name": "KlickMaroc",
+      "alternateName": "كليك ماروك",
+      "inLanguage": "ar-MA",
+      "publisher": {
+        "@id": "https://klickmaroc.pages.dev/#store"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://klickmaroc.pages.dev/#webpage",
+      "url": "https://klickmaroc.pages.dev/",
+      "name": "KlickMaroc | التسوق أونلاين في المغرب",
+      "isPartOf": {
+        "@id": "https://klickmaroc.pages.dev/#website"
+      },
+      "about": {
+        "@id": "https://klickmaroc.pages.dev/#store"
+      },
+      "inLanguage": "ar-MA"
+    }
+  ]
 }
 </script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="KlickMaroc | اختيارات عملية لحياتك اليومية">
-<meta property="og:description" content="اكتشف منتجات KlickMaroc واطلب بسهولة عبر واتساب.">
+<meta property="og:title" content="KlickMaroc | متجر إلكتروني للتسوق في المغرب">
+<meta property="og:description" content="اكتشف أدوات المنزل والمطبخ، العناية الشخصية وإكسسوارات السيارات مع KlickMaroc. اطلب منتجاتك بسهولة في المغرب.">
 <meta property="og:locale" content="ar_MA">
 <meta name="theme-color" content="#24114d">
 <link rel="preconnect" href="https://wa.me">
