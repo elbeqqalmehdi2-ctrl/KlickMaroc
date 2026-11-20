@@ -447,7 +447,7 @@ document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()
 .km-luxe .km-tag{font-size:clamp(13px,3vw,18px);color:#d0c9bd;letter-spacing:.06em;direction:rtl}
 .km-luxe .ki-skip{background:transparent;color:#d0c9bd;border-color:#ffffff30;font-size:12px;left:auto;right:18px}
 .km-luxe .ki-progress{bottom:7%;background:#ffffff18;width:100px;height:2px}
-.km-luxe .ki-progress i{background:#dbb879;transform-origin:left;animation:kiProgress 2.5s linear both}
+.km-luxe .ki-progress i{background:#dbb879;transform-origin:left;animation:kiProgress 5.5s linear both}
 #kmIntro.km-luxe.ki-exit{animation:kmFade .35s both}
 @keyframes kmReveal{0%{opacity:0;transform:translateY(12px) scale(.96)}35%,100%{opacity:1;transform:none}}
 @keyframes kmLine{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
@@ -456,7 +456,7 @@ document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()
 .km-luxe .km-name{position:relative;background:linear-gradient(105deg,#f6f3ed 25%,#f6f3ed 42%,#fff4ce 50%,#f6f3ed 58%);background-size:250% 100%;background-clip:text;-webkit-background-clip:text;color:transparent;animation:kmShine 1.65s .35s both}
 .km-luxe .km-name span{color:transparent;background:linear-gradient(105deg,#bd9351 20%,#e8ca8d 45%,#fff0bf 50%,#c99d58 70%);background-size:250% 100%;background-clip:text;-webkit-background-clip:text;animation:kmShine 1.65s .35s both}
 .km-luxe .km-tag{animation:kmTag .65s .65s both}
-.km-luxe .km-center:before{content:"";position:absolute;inset:-55px;pointer-events:none;background:radial-gradient(ellipse,#d9ad6020,transparent 65%);z-index:-1;animation:kmGlow 2.5s both}
+.km-luxe .km-center:before{content:"";position:absolute;inset:-55px;pointer-events:none;background:radial-gradient(ellipse,#d9ad6020,transparent 65%);z-index:-1;animation:kmGlow 5.5s both}
 .km-luxe .km-center{position:relative;isolation:isolate}
 #kmIntro.km-luxe.ki-exit{animation:kmFadePremium .35s both}
 @keyframes kmMark{from{opacity:0;transform:scale(.65) rotate(-12deg)}to{opacity:1;transform:none}}
@@ -469,13 +469,13 @@ document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()
 
 </style>
 <script>
-(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroLuxeV3'))return;}catch(e){}
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroLuxeV4'))return;}catch(e){}
 const intro=document.createElement('div');intro.id='kmIntro';intro.className='km-luxe';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','مقدمة KlickMaroc');
 intro.innerHTML='<button class="ki-skip" type="button">تجاوز المقدمة</button><div class="km-center"><svg class="km-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="12" stroke="currentColor" stroke-width="1.5" transform="rotate(45 32 32)"/><path d="M23 19v26m0-12 17-14M23 33l17 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="km-name">Klick<span>Maroc</span></div><div class="km-line"></div><div class="km-tag">منتجات مختارة · أسعار مناسبة · تسوق بسهولة</div><div class="km-promise">اختيارك الذكي للتسوق في المغرب</div></div><div class="ki-progress" aria-hidden="true"><i></i></div>';
 const existing=[...document.body.children].filter(el=>!['SCRIPT','STYLE'].includes(el.tagName));const states=existing.map(el=>[el,el.inert]);const scroll=document.body.style.overflow;const previous=document.activeElement;document.body.append(intro);existing.forEach(el=>el.inert=true);document.body.style.overflow='hidden';const skip=intro.querySelector('button');skip.focus({preventScroll:true});let closed=false;
-function close(){if(closed)return;closed=true;clearTimeout(timer);try{sessionStorage.setItem('kmIntroLuxeV3','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus({preventScroll:true});},350);document.removeEventListener('keydown',key)}
+function close(){if(closed)return;closed=true;clearTimeout(timer);try{sessionStorage.setItem('kmIntroLuxeV4','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus({preventScroll:true});},350);document.removeEventListener('keydown',key)}
 function key(e){if(e.key==='Escape')close();if(e.key==='Tab'){e.preventDefault();skip.focus()}}
-skip.addEventListener('click',close);document.addEventListener('keydown',key);const timer=setTimeout(close,2500);})();
+skip.addEventListener('click',close);document.addEventListener('keydown',key);const timer=setTimeout(close,5500);})();
 </script>
 </body>
 </html>
