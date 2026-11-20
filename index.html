@@ -216,6 +216,7 @@ button:focus-visible,a:focus-visible,.product:focus-visible,.order-wa:focus-visi
 @media(prefers-reduced-motion:reduce){#productGrid .main-product-image{transition:none}}
 </style>
 <meta name="google-site-verification" content="j42u8u_3J5bacj1qBAVlEwQ6991Xy1Wau-nEggngeO4" />
+<style>.hero .hero-grid{grid-template-columns:1fr}.hero .hero-grid>div:first-child{max-width:850px;margin-inline:auto;text-align:center}.hero .hero-grid .hero-actions,.hero .hero-grid .hero-perks{justify-content:center}.hero .hero-grid p{margin-inline:auto}</style>
 </head>
 <body>
 <header><div class="wrap nav">
@@ -225,10 +226,7 @@ button:focus-visible,a:focus-visible,.product:focus-visible,.order-wa:focus-visi
 <main><div class="announcement" aria-label="معلومات التسوق"><div class="announcement-inner" id="kmAnnouncements"><span>🚚 التوصيل لجميع أنحاء المغرب حسب المدينة</span><span>💳 خلّص عند الاستلام</span><span>✨ منتجات مختارة وأثمنة واضحة</span><span>🛡️ سولنا على شروط الضمان قبل الطلب</span><span>📦 تأكيد الكمية والتوفر عبر واتساب</span></div></div>
 <div class="hero"><div class="wrap hero-grid">
 <div><div class="eyebrow">✦ KlickMaroc • تسوّق بسهولة وخلّص عند الاستلام</div><h1>منتجات كتسهّل يومك.<br>تسوّق بثقة وراحة!</h1><p>من أدوات المطبخ والعناية الشخصية حتى إكسسوارات السيارة… اختيارات عملية بأثمنة واضحة. عجبك شي منتج؟ طلبو من الموقع أو عبر واتساب، وخلّص غير ملي توصلك الطلبية. كنأكدوا معاك التوفر والثمن النهائي قبل الشحن.</p><div class="hero-actions"><a class="btn" href="#products">🛍️ اكتشف المنتجات واطلب الآن</a><a class="btn btn-secondary" href="https://wa.me/212710848218?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D9%85%D9%86%D8%AA%D8%AC" target="_blank" rel="noopener">💬 سولنا على واتساب</a></div><div class="hero-perks"><span>✓ الدفع عند الاستلام</span><span>✓ طلب من الموقع أو واتساب</span><span>✓ تأكيد المجموع قبل الشحن</span></div></div>
-<div class="hero-art km-showcase" id="kmShowcase" aria-label="منتجات مختارة">
-<div class="km-stage"><span class="km-orbit"></span><img id="kmHeroImage" src="6a693d29c7091.webp" alt="طحانة كهربائية للقهوة والتوابل ب 4 شفرات" fetchpriority="high"></div>
-<div class="km-caption"><strong id="kmHeroName">طحانة كهربائية للقهوة والتوابل ب 4 شفرات</strong><span id="kmHeroPrice">179 DH</span><a id="kmHeroLink" href="#products">اكتشف المنتج</a></div>
-<div class="km-controls"><button type="button" id="kmPrev" aria-label="المنتج السابق">‹</button><button type="button" id="kmPause" aria-label="إيقاف الحركة">Ⅱ</button><button type="button" id="kmNext" aria-label="المنتج التالي">›</button></div></div>
+
 </div></div>
 <div class="trust-strip"><div class="wrap trust-strip-inner"><span>🔒 ما كاين حتى دفع إلكتروني مسبق</span><span>🚚 التوصيل حسب المدينة بعد التأكيد</span><span>💬 تواصل مباشر عبر واتساب</span></div></div>
 <section class="promo-section" aria-label="إعلانات المنتجات المختارة"><div class="wrap"><div class="promo-heading"><h2>🔥 عروض ومنتجات KlickMaroc</h2><span>اكتشف الجديد واختار اللي عجبك</span></div><div class="promo-window" id="promoWindow"><div class="promo-track" id="promoTrack"></div><button type="button" class="promo-arrow promo-prev" id="promoPrev" aria-label="الإعلان السابق">❮</button><button type="button" class="promo-arrow promo-next" id="promoNext" aria-label="الإعلان التالي">❯</button></div><div class="promo-dots" id="promoDots" aria-label="اختيار الإعلان"></div></div></section>
@@ -427,12 +425,7 @@ const schemaScript=document.createElement("script");schemaScript.type="applicati
 
 
 <script>
-(()=>{const box=document.getElementById('kmShowcase');if(!box||typeof products==='undefined')return;
-const picks=['GRINDER4BLADE','MOTO-BT-HEADSET','SCOOTER-BAG','A144','battery'].map(id=>products.find(p=>p.sku===id)).filter(Boolean);if(!picks.length)return;
-const img=document.getElementById('kmHeroImage'),name=document.getElementById('kmHeroName'),price=document.getElementById('kmHeroPrice'),link=document.getElementById('kmHeroLink'),pause=document.getElementById('kmPause');let i=0,timer=null,paused=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function show(n){i=(n+picks.length)%picks.length;const p=picks[i];img.src=p.image;img.alt=p.name;name.textContent=p.name;price.textContent=p.price;link.href='#product-'+p.sku.toLowerCase().replace(/[^a-z0-9-]/g,'-');img.style.animation='none';void img.offsetWidth;img.style.animation='';}
-function sync(){clearInterval(timer);timer=null;pause.textContent=paused?'▶':'Ⅱ';pause.setAttribute('aria-label',paused?'تشغيل الحركة':'إيقاف الحركة');if(!paused&&!document.hidden)timer=setInterval(()=>show(i+1),6000);}
-document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()});document.getElementById('kmNext').addEventListener('click',()=>{show(i+1);sync()});pause.addEventListener('click',()=>{paused=!paused;sync()});document.addEventListener('visibilitychange',sync);show(0);sync();})();
+
 </script>
 
 <style>
