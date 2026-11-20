@@ -398,17 +398,32 @@ function sync(){clearInterval(timer);timer=null;pause.textContent=paused?'▶':'
 document.getElementById('kmPrev').addEventListener('click',()=>{show(i-1);sync()});document.getElementById('kmNext').addEventListener('click',()=>{show(i+1);sync()});pause.addEventListener('click',()=>{paused=!paused;sync()});document.addEventListener('visibilitychange',sync);show(0);sync();})();
 </script>
 
+<style>
+#kmIntro.km-luxe{background:#090b10;color:#fff;direction:ltr;font-family:system-ui,sans-serif}
+#kmIntro.km-luxe:before{inset:0;background:radial-gradient(ellipse at 50% 45%,#30271b 0%,#090b10 65%);filter:none;animation:none;opacity:1}
+#kmIntro.km-luxe:after{background:none}
+.km-luxe .km-center{text-align:center;padding:24px;animation:kmReveal 2.4s cubic-bezier(.2,.7,.2,1) both}
+.km-luxe .km-mark{width:58px;height:58px;margin:0 auto 24px;color:#dbb879}
+.km-luxe .km-name{font-size:clamp(48px,10vw,104px);font-weight:800;letter-spacing:-.065em;line-height:1.1}
+.km-luxe .km-name span{color:#dbb879}
+.km-luxe .km-line{height:1px;width:88px;background:#dbb879;margin:24px auto;animation:kmLine 1.2s .3s both}
+.km-luxe .km-tag{font-size:clamp(13px,3vw,18px);color:#d0c9bd;letter-spacing:.06em;direction:rtl}
+.km-luxe .ki-skip{background:transparent;color:#d0c9bd;border-color:#ffffff30;font-size:12px;left:auto;right:18px}
+.km-luxe .ki-progress{bottom:7%;background:#ffffff18;width:100px;height:2px}
+.km-luxe .ki-progress i{background:#dbb879;transform-origin:left;animation:kiProgress 2.5s linear both}
+#kmIntro.km-luxe.ki-exit{animation:kmFade .35s both}
+@keyframes kmReveal{0%{opacity:0;transform:translateY(12px) scale(.96)}35%,100%{opacity:1;transform:none}}
+@keyframes kmLine{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@keyframes kmFade{to{opacity:0}}
+</style>
 <script>
-(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroStudioV3'))return;}catch(e){}
-if(typeof products==='undefined'||!products.length)return;
-const chosen=['GRINDER4BLADE','MOTO-BT-HEADSET','A144','battery'].map(id=>products.find(p=>p.sku===id)).filter(Boolean);if(chosen.length!==4)return;
-const intro=document.createElement('div');intro.id='kmIntro';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','مقدمة KlickMaroc');intro.innerHTML='<div class="ki-ring" aria-hidden="true"></div><button class="ki-skip" type="button">تجاوز المقدمة ←</button><div class="ki-progress" aria-hidden="true"><i></i></div>';
-const scenes=[];for(const p of chosen){const scene=document.createElement('div');scene.className='ki-scene';const img=document.createElement('img');img.src=p.image;img.alt=p.name;const h=document.createElement('h2');h.textContent=p.name;const sub=document.createElement('p');sub.textContent='اكتشف اختيارات KlickMaroc';scene.append(img,h,sub);intro.append(scene);scenes.push(scene)}
-const final=document.createElement('div');final.className='ki-scene';final.innerHTML='<div class="ki-word">Klick<span>Maroc</span></div><h2>اختيارات عملية لحياتك اليومية</h2><p>مرحبا بك في متجرنا</p>';intro.append(final);scenes.push(final);
-const existing=[...document.body.children].filter(el=>!['SCRIPT','STYLE'].includes(el.tagName));const states=existing.map(el=>[el,el.inert]);const scroll=document.body.style.overflow;const previous=document.activeElement;document.body.append(intro);existing.forEach(el=>el.inert=true);document.body.style.overflow='hidden';const skip=intro.querySelector('button');skip.focus();let timers=[],closed=false;
-function close(){if(closed)return;closed=true;timers.forEach(clearTimeout);try{sessionStorage.setItem('kmIntroStudioV3','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus();},650);document.removeEventListener('keydown',key)}
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{if(sessionStorage.getItem('kmIntroLuxeV1'))return;}catch(e){}
+const intro=document.createElement('div');intro.id='kmIntro';intro.className='km-luxe';intro.setAttribute('role','dialog');intro.setAttribute('aria-modal','true');intro.setAttribute('aria-label','مقدمة KlickMaroc');
+intro.innerHTML='<button class="ki-skip" type="button">تجاوز المقدمة</button><div class="km-center"><svg class="km-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="12" stroke="currentColor" stroke-width="1.5" transform="rotate(45 32 32)"/><path d="M23 19v26m0-12 17-14M23 33l17 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="km-name">Klick<span>Maroc</span></div><div class="km-line"></div><div class="km-tag">اختيارات راقية لحياتك اليومية</div></div><div class="ki-progress" aria-hidden="true"><i></i></div>';
+const existing=[...document.body.children].filter(el=>!['SCRIPT','STYLE'].includes(el.tagName));const states=existing.map(el=>[el,el.inert]);const scroll=document.body.style.overflow;const previous=document.activeElement;document.body.append(intro);existing.forEach(el=>el.inert=true);document.body.style.overflow='hidden';const skip=intro.querySelector('button');skip.focus({preventScroll:true});let closed=false;
+function close(){if(closed)return;closed=true;clearTimeout(timer);try{sessionStorage.setItem('kmIntroLuxeV1','1')}catch(e){}intro.classList.add('ki-exit');setTimeout(()=>{intro.remove();states.forEach(([el,state])=>el.inert=state);document.body.style.overflow=scroll;if(previous&&previous.focus)previous.focus({preventScroll:true});},350);document.removeEventListener('keydown',key)}
 function key(e){if(e.key==='Escape')close();if(e.key==='Tab'){e.preventDefault();skip.focus()}}
-skip.addEventListener('click',close);document.addEventListener('keydown',key);scenes.forEach((scene,i)=>{timers.push(setTimeout(()=>{scenes.forEach(x=>x.classList.remove('ki-active'));scene.classList.add('ki-active')},i*4600))});timers.push(setTimeout(close,23000));})();
+skip.addEventListener('click',close);document.addEventListener('keydown',key);const timer=setTimeout(close,2500);})();
 </script>
 </body>
 </html>
